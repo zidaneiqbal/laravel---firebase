@@ -1,0 +1,16 @@
+{
+  "menu": [
+    {
+      "url": "admin/about",
+      "name": "About",
+      "icon": "home",
+      "slug": "about"
+    },
+    {
+      "url": "admin/certificates",
+      "name": "Certificates",
+      "icon": "bookmark",
+      "slug": "certificates"
+    }
+  ]
+}
