@@ -12,8 +12,7 @@ class FirebaseServiceProvider extends ServiceProvider
         $this->app->singleton('firebase', function () {
             return (new Factory)
                 ->withServiceAccount(base_path(env('FIREBASE_CREDENTIALS')))
-                ->withDatabaseUri(env("FIREBASE_DATABASE_URL"))
-                ->withDisabledAutoDiscovery();
+                ->withDatabaseUri(env("FIREBASE_DATABASE_URL"));
         });
     }
 

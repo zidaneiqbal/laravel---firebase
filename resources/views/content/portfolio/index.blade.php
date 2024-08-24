@@ -1,15 +1,15 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Certificates Page')
+@section('title', 'Portfolio Page')
 
 @section('content')
 <!-- Content -->
 <div class="card">
   <div class="card-header">
-    <a href="{{ url('admin/certificates/add') }}" class="btn btn-primary">Add +</a>
+    <a href="{{ url('admin/portfolio/add') }}" class="btn btn-primary">Add +</a>
   </div>
   <div class="card-body">
-    <table id="certificates-table" class="datatables-users table">
+    <table id="portfolio-table" class="datatables-users table">
       <thead class="table-light">
         <tr>
           <th>No.</th>
@@ -29,10 +29,10 @@
 <script type="text/javascript">
   jQuery.noConflict();
   jQuery(document).ready(function($) {
-    $('#certificates-table').DataTable({
+    $('#portfolio-table').DataTable({
       processing: true,
       serverSide: true,
-      ajax: "{{ route('certificates.data') }}",
+      ajax: "{{ route('portfolio.data') }}",
       columns: [{
           data: 'DT_RowIndex',
           name: 'DT_RowIndex',
@@ -66,10 +66,10 @@
           }
         });
         $.ajax({
-          url: '{{ url("admin/certificates/delete") }}/' + id,
+          url: '{{ url("admin/portfolio/delete") }}/' + id,
           type: 'DELETE',
           success: function(result) {
-            $('#certificates-table').DataTable().ajax.reload();
+            $('#portfolio-table').DataTable().ajax.reload();
             alert(result.success);
           },
           error: function(xhr) {

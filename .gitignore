@@ -9,6 +9,7 @@
 /public/vendors
 /storage/*.key
 /vendor
+/vendor2
 .env
 .env.backup
 .phpunit.result.cache

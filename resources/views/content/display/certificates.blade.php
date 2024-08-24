@@ -8,7 +8,7 @@
     <div class="row">
       @if($certificates)
       @foreach($certificates as $certificate)
-      <div class="col-md-4 col-sm-6 mb-4">
+      <div class="col-md-4 col-sm-6 mb-2">
         <div class="card shadow-sm">
           @if(isset($certificate['photo']))
           <img src="{{ asset('storage/' . $certificate['photo']) }}" class="card-img-top" alt="{{ $certificate['name'] }}">
@@ -34,6 +34,16 @@
 <style>
   .container-fluid {
     background-color: #55423d;
+  }
+
+  .card {
+    background-color: #ffc0ad;
+  }
+
+  .card-title {
+    color: #271c19;
+    font-weight: 700 !important;
+    margin-bottom: 0 !important;
   }
 </style>
 @endpush

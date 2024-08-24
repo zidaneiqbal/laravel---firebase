@@ -78,14 +78,14 @@ $configData = Helper::applClasses();
         <li class="nav-item {{ request()->routeIs('about.display') ? 'active' : 'inactive' }}">
           <a class="nav-link {{ request()->routeIs('about.display') ? 'active' : 'inactive' }}"" href=" {{ route('about.display') }}">About</a>
         </li>
-        <li class="nav-item {{ request()->routeIs('certificates') ? 'active' : 'inactive' }}">
+        <li class="nav-item {{ request()->routeIs('certificates.display') ? 'active' : 'inactive' }}">
           <a class="nav-link {{ request()->routeIs('certificates.display') ? 'active' : '' }}"" href=" {{ route('certificates.display') }}">Certificates</a>
         </li>
-        <li class="nav-item {{ request()->routeIs('portfolio') ? 'active' : 'inactive' }}">
-          <a class="nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}"" href=" {{ route('about.display') }}">Portfolio</a>
+        <li class="nav-item {{ request()->routeIs('portfolio.display') ? 'active' : 'inactive' }}">
+          <a class="nav-link {{ request()->routeIs('portfolio.display') ? 'active' : '' }}"" href=" {{ route('portfolio.display') }}">Portfolio</a>
         </li>
-        <li class="nav-item {{ request()->routeIs('chatbot') ? 'active' : 'inactive' }}">
-          <a class="nav-link {{ request()->routeIs('chatbot') ? 'active' : '' }}"" href=" {{ route('chatbot.display') }}">Chat Bot</a>
+        <li class="nav-item {{ request()->routeIs('chatbot.display') ? 'active' : 'inactive' }}">
+          <a class="nav-link {{ request()->routeIs('chatbot.display') ? 'active' : '' }}"" href=" {{ route('chatbot.display') }}">Chat Bot</a>
         </li>
       </ul>
     </div>

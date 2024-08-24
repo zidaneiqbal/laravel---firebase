@@ -5,6 +5,7 @@ return [
   "About"=>"About",
   "Certificates"=>"Certificates",
   "Certificate"=>"Certificate",
+  "Portfolio"=>"Portfolio",
   "Starter Kit"=>"Starter Kit",
   "Dashboards" => "Dashboards",
   "Analytics" => "Analytics",

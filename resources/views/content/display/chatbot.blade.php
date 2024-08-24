@@ -32,39 +32,51 @@
 
 @push('scripts')
 <script>
-  // Mock response function
-  function getGeminiResponse(userMessage) {
-    return "Gemini: " + userMessage.split("").reverse().join(""); // Example response, reverse user message
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('button-send').addEventListener('click', function() {
+        let chatInput = document.getElementById('chat-input');
+        let chatBox = document.getElementById('chat-box');
 
-  document.getElementById('button-send').addEventListener('click', function() {
-    let chatInput = document.getElementById('chat-input');
-    let chatBox = document.getElementById('chat-box');
+        if (chatInput.value.trim() !== '') {
+            let userMessage = chatInput.value.trim();
 
-    if (chatInput.value.trim() !== '') {
-      let userMessage = chatInput.value.trim();
+            // Tambahkan pesan pengguna ke chat box
+            let userMessageHtml = '<div class="text-right mb-2"><span class="badge badge-primary">' + userMessage + '</span></div>';
+            chatBox.innerHTML += userMessageHtml;
 
-      // Add user message to chat box
-      let userMessageHtml = '<div class="text-right mb-2"><span class="badge badge-primary">' + userMessage + '</span></div>';
-      chatBox.innerHTML += userMessageHtml;
+            // Bersihkan input
+            chatInput.value = '';
 
-      // Clear input
-      chatInput.value = '';
+            // Scroll ke bagian bawah
+            chatBox.scrollTop = chatBox.scrollHeight;
 
-      // Scroll to bottom
-      chatBox.scrollTop = chatBox.scrollHeight;
+            // Kirim pesan ke server untuk mendapatkan respons Gemini
+            fetch('{{ route('chat.gemini-response') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.response) {
+                    let geminiMessageHtml = '<div class="text-left mb-2"><span class="badge badge-secondary">' + data.response + '</span></div>';
+                    chatBox.innerHTML += geminiMessageHtml;
 
-      // Mock Gemini response
-      setTimeout(function() {
-        let geminiResponse = getGeminiResponse(userMessage);
-        let geminiMessageHtml = '<div class="text-left mb-2"><span class="badge badge-secondary">' + geminiResponse + '</span></div>';
-        chatBox.innerHTML += geminiMessageHtml;
-
-        // Scroll to bottom
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 500); // Simulate delay
-    }
-  });
+                    // Scroll ke bagian bawah
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                } else if (data.error) {
+                    alert('Error: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
+});
 </script>
 @endpush
 @push('styles')

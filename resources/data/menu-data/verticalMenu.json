@@ -11,6 +11,12 @@
       "name": "Certificates",
       "icon": "bookmark",
       "slug": "certificates"
+    },
+    {
+      "url": "admin/portfolio",
+      "name": "Portfolio",
+      "icon": "code",
+      "slug": "portfolio"
     }
   ]
 }
