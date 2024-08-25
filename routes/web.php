@@ -29,8 +29,9 @@ Route::get('/chatbot', [DisplayController::class, 'chatbot'])->name('chatbot.dis
 Route::post('/chat/gemini-response', [DisplayController::class, 'getGeminiResponse'])->name('chat.gemini-response');
 
 Route::group(['prefix'=>'admin'], function(){
-    Route::get('about', [AboutController::class, 'index'])->name('about');
-    Route::post('about', [AboutController::class, 'store'])->name('about.update');
+    Route::get('/', [AboutController::class, 'index'])->name('about');
+    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::post('/about', [AboutController::class, 'store'])->name('about.update');
     
     Route::group(['prefix'=>'certificates'], function() {
         Route::get('/', [CertificateController::class, 'index'])->name('certificates');
