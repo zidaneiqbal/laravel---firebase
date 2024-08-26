@@ -95,6 +95,7 @@ class CertificateController extends Controller
         if ($request['file']) {
             $fileName = time() . '_' . $request['file']->getClientOriginalName();
             $filePath = $request['file']->storeAs('certificates', $fileName, 'public');
+            // $request['file']->move(public_path('certificates'), $fileName);
 
             $newCertificateId = $reference->push()->getKey();
 
